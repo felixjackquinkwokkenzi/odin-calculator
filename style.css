@@ -1,0 +1,129 @@
+:root {
+  --page-bg: #f2f2f2;
+  --top-bar: #000000;
+  --calc-body: #9a9a9a;
+  --display-bg: #ececec;
+  --border-dark: #222222;
+  --btn-bg: #ededed;
+  --btn-clear: #f4a6a6;
+  --btn-delete: #a6a6f4;
+  --text-dark: #1a1a1a;
+  --footer-text: #4a4a4a;
+  --radius: 10px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--page-bg);
+  min-height: 100vh;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+}
+
+.calculator {
+  background-color: var(--calc-body);
+  border-radius: 24px;
+  padding: 24px;
+  width: 100%;
+  max-width: 460px;
+  border: 3px solid var(--border-dark);
+}
+
+.display {
+  background-color: var(--display-bg);
+  border: 3px solid var(--border-dark);
+  border-radius: var(--radius);
+  height: 130px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 16px 20px;
+  font-size: 48px;
+  color: var(--text-dark);
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 20px;
+}
+
+.button-row{
+  margin-bottom: 14px;
+}
+
+.button-row:last-child{
+  margin-bottom: 0;
+}
+
+.button-row button {
+  border: 3px solid var(--border-dark);
+  border-radius: var(--radius);
+  background: var(--btn-bg);
+  font-size: 26px;
+  padding: 18px 0;
+  cursor: pointer;
+  color: var(--text-dark);
+  transition: filter 0.1s ease;
+}
+
+.button-row button:hover {
+  filter: brightness(0.9);
+}
+
+.button-row button:active {
+  filter: brightness(0.75);
+}
+
+.button-row button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.button-row.two-columns {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+}
+
+.button-row .clear {
+  background-color: var(--btn-clear);
+}
+
+.button-row .delete {
+  background-color: var(--btn-delete);
+}
+
+.button-row.four-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  width: 100%;
+}
+
+footer {
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--footer-text);
+  font-size: 14px;
+}
+
+footer a {
+  color: var(--footer-text);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--text-dark);
+}
