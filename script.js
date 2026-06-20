@@ -1,3 +1,10 @@
+const calculator = {
+  displayValue: "0",
+  firstOperand: null,
+  operator: null,
+  waitingForSecondOperand: false,
+};
+
 function add(num1, num2) {
   return num1 + num2;
 }
