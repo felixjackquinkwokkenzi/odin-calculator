@@ -1,15 +1,22 @@
 :root {
-  --page-bg: #f2f2f2;
-  --top-bar: #000000;
-  --calc-body: #9a9a9a;
-  --display-bg: #ececec;
-  --border-dark: #222222;
-  --btn-bg: #ededed;
-  --btn-clear: #f4a6a6;
-  --btn-delete: #a6a6f4;
-  --text-dark: #1a1a1a;
-  --footer-text: #4a4a4a;
-  --radius: 10px;
+  --page-bg: #f8fafc;        /* Slate 50 - Latar belakang sangat bersih dan modern */
+  --top-bar: #3b82f6;        /* Blue 500 - Aksen garis biru segar di bagian atas */
+  --calc-body: #ffffff;      /* Putih bersih untuk body kalkulator */
+  --display-bg: #f1f5f9;     /* Slate 100 - Latar belakang display yang lembut */
+  --border-color: #e2e8f0;   /* Slate 200 - Garis border tipis dan elegan */
+  --btn-bg: #ffffff;         /* Tombol angka putih */
+  --btn-number-text: #334155;/* Slate 700 - Warna teks angka yang kontras tapi lembut */
+  --btn-operator-bg: #f8fafc;/* Slate 50 - Latar tombol operator */
+  --btn-operator-text: #475569;/* Slate 600 - Warna teks operator */
+  --btn-clear-bg: #fee2e2;   /* Rose 100 - Warna tombol CLEAR */
+  --btn-clear-text: #ef4444; /* Rose 500 */
+  --btn-delete-bg: #f3e8ff;  /* Purple 100 - Warna tombol DELETE */
+  --btn-delete-text: #a855f7;/* Purple 500 */
+  --btn-equal-bg: #3b82f6;   /* Blue 500 - Warna tombol EQUAL */
+  --btn-equal-text: #ffffff; /* Putih */
+  --text-dark: #1e293b;      /* Slate 800 - Warna teks utama */
+  --footer-text: #64748b;    /* Slate 500 - Warna teks footer */
+  --radius: 14px;
 }
 
 * {
@@ -19,88 +26,104 @@
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background-color: var(--page-bg);
   min-height: 100vh;
+  color: var(--text-dark);
+}
+
+.top-bar {
+  height: 8px;
+  background-color: var(--top-bar);
+  width: 100%;
 }
 
 .page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   padding: 60px 20px;
+  min-height: calc(100vh - 8px);
 }
 
 .calculator {
   background-color: var(--calc-body);
-  border-radius: 24px;
-  padding: 24px;
+  border-radius: 28px;
+  padding: 28px;
   width: 100%;
-  max-width: 460px;
-  border: 3px solid var(--border-dark);
+  max-width: 440px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.02), 0 8px 10px -6px rgba(0, 0, 0, 0.02), 0 20px 50px -12px rgba(0, 0, 0, 0.05);
 }
 
 .display {
   background-color: var(--display-bg);
-  border: 3px solid var(--border-dark);
-  border-radius: var(--radius);
-  height: 130px;
+  border: 1px solid var(--border-color);
+  border-radius: 18px;
+  height: 120px;
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  padding: 16px 20px;
-  font-size: 48px;
+  padding: 20px 24px;
+  font-size: 44px;
+  font-weight: 500;
   color: var(--text-dark);
   overflow: hidden;
   white-space: nowrap;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
+  box-shadow: inset 0 2px 4px 0 rgba(0, 0, 0, 0.03);
 }
 
-.button-row{
+.button-row {
   margin-bottom: 14px;
 }
 
-.button-row:last-child{
+.button-row:last-child {
   margin-bottom: 0;
 }
 
 .button-row button {
-  border: 3px solid var(--border-dark);
+  border: 1px solid var(--border-color);
   border-radius: var(--radius);
   background: var(--btn-bg);
-  font-size: 26px;
-  padding: 18px 0;
+  font-size: 24px;
+  font-weight: 500;
+  padding: 16px 0;
   cursor: pointer;
-  color: var(--text-dark);
-  transition: filter 0.1s ease;
+  color: var(--btn-number-text);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+  transition: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Efek Hover */
 .button-row button:hover {
-  filter: brightness(0.9);
+  background-color: #f1f5f9; /* Slate 100 */
+  border-color: #cbd5e1; /* Slate 300 */
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
 }
 
+/* Efek Active */
 .button-row button:active {
-  filter: brightness(0.75);
+  transform: translateY(0);
+  background-color: #e2e8f0; /* Slate 200 */
+  box-shadow: none;
 }
 
 .button-row button:disabled {
-  opacity: 0.5;
+  opacity: 0.4;
   cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
 }
 
+/* Grid Layout Rows */
 .button-row.two-columns {
   display: grid;
   width: 100%;
   grid-template-columns: repeat(2, 1fr);
   gap: 14px;
-}
-
-.button-row .clear {
-  background-color: var(--btn-clear);
-}
-
-.button-row .delete {
-  background-color: var(--btn-delete);
 }
 
 .button-row.four-columns {
@@ -110,8 +133,62 @@ body {
   width: 100%;
 }
 
+/* Styling Tombol Spesifik */
+.button-row .clear {
+  background-color: var(--btn-clear-bg);
+  color: var(--btn-clear-text);
+  border-color: rgba(239, 68, 68, 0.15);
+}
+.button-row .clear:hover {
+  background-color: #fecaca; /* Rose 200 */
+  border-color: rgba(239, 68, 68, 0.3);
+}
+.button-row .clear:active {
+  background-color: #fca5a5; /* Rose 300 */
+}
+
+.button-row .delete {
+  background-color: var(--btn-delete-bg);
+  color: var(--btn-delete-text);
+  border-color: rgba(168, 85, 247, 0.15);
+}
+.button-row .delete:hover {
+  background-color: #e9d5ff; /* Purple 200 */
+  border-color: rgba(168, 85, 247, 0.3);
+}
+.button-row .delete:active {
+  background-color: #d8b4fe; /* Purple 300 */
+}
+
+/* Operator Buttons styling */
+.button-row button[data-operator] {
+  background-color: var(--btn-operator-bg);
+  color: var(--btn-operator-text);
+}
+.button-row button[data-operator]:hover {
+  background-color: #e2e8f0;
+  border-color: #cbd5e1;
+}
+
+/* Equals Button styling */
+.button-row button[data-action="calculate"] {
+  background-color: var(--btn-equal-bg);
+  color: var(--btn-equal-text);
+  border-color: var(--btn-equal-bg);
+  font-weight: 600;
+}
+.button-row button[data-action="calculate"]:hover {
+  background-color: #2563eb; /* Blue 600 */
+  border-color: #2563eb;
+  color: #ffffff;
+}
+.button-row button[data-action="calculate"]:active {
+  background-color: #1d4ed8; /* Blue 700 */
+}
+
+/* Footer Styling */
 footer {
-  margin-top: 28px;
+  margin-top: 36px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -122,8 +199,15 @@ footer {
 footer a {
   color: var(--footer-text);
   text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.15s ease;
 }
 
 footer a:hover {
   color: var(--text-dark);
+}
+
+footer i {
+  font-size: 16px;
 }
